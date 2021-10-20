@@ -1,0 +1,188 @@
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin hide-block {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+@mixin hide-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  line-height: 1px;
+  overflow: hidden;
+}
+
+@mixin ellipsis($axis, $param) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @if($axis=='width') {
+    max-width: $param;
+  }
+
+  @else if($axis=='height') {
+    max-height: $param;
+  }
+}
+
+@mixin calc-rem($property, $value, $important: false) {
+
+  $remSize: $value / 1rem;
+  $hasImportant: null;
+
+  /*@if ($important==true or $important==important) {
+    $hasImportant:  !important;
+  }*/
+
+  #{$property}: $value;
+  //#{$property}: #{$remSize}rem $hasImportant;
+}
+
+@mixin font-size($size, $unit:rem) {
+  font-size: calculate_rem($size, $unit);
+}
+
+
+@mixin init-icon-font {
+  font-family: $icon-font;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  // Enable Ligatures
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga"1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+
+  // Better Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon-font($icon:'', $color:'', $font-size:1rem, $direction:before) {
+  @if $direction==after {
+    &:after {
+      @include init-icon-font;
+
+      @if $icon==data-icon {
+        content: attr(data-icon);
+      }
+
+      @else {
+        content: quote($icon);
+        color: map-get($colors, 'font-color');
+        font-size: $font-size;
+      }
+
+      @content;
+    }
+  }
+
+  @else {
+    &:before {
+      @include init-icon-font;
+
+      @if $icon==data-icon {
+        content: attr(data-icon);
+      }
+
+      @else {
+        content: quote($icon);
+        color: map-get($colors, 'font-color');
+        font-size: $font-size;
+      }
+
+      @content;
+    }
+  }
+}
+
+/*
+* Media query mixins
+* Based on bootstrap breakpoints
+*/
+
+@mixin from_sm{
+  @media screen and (min-width: map-get($grid-breakpoints, 'sm')){
+    @content;
+  }
+}
+@mixin from_md{
+  @media screen and (min-width: map-get($grid-breakpoints, 'md')){
+    @content;
+  }
+}
+@mixin from_lg{
+  @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+    @content;
+  }
+}
+@mixin from_xl{
+  @media screen and (min-width: map-get($grid-breakpoints, 'xl')){
+    @content;
+  }
+}
+
+@mixin until_sm{
+  @media screen and (max-width: map-get($grid-breakpoints, 'sm')){
+    @content;
+  }
+}
+@mixin until_md{
+  @media screen and (max-width: map-get($grid-breakpoints, 'md')){
+    @content;
+  }
+}
+@mixin until_lg{
+  @media screen and (max-width: map-get($grid-breakpoints, 'lg')){
+    @content;
+  }
+}
+@mixin until_xl{
+  @media screen and (max-width: map-get($grid-breakpoints, 'xl')){
+    @content;
+  }
+}
+
+@mixin between_xs-sm{
+  @media screen and (min-width: map-get($grid-breakpoints, 'xs')) and (max-width: map-get($grid-breakpoints, 'sm')){
+    @content;
+  }
+}
+@mixin between_sm-md{
+  @media screen and (min-width: map-get($grid-breakpoints, 'sm')) and (max-width: map-get($grid-breakpoints, 'md')){
+    @content;
+  }
+}
+@mixin between_md-lg{
+  @media screen and (min-width: map-get($grid-breakpoints, 'md')) and (max-width: map-get($grid-breakpoints, 'lg')){
+    @content;
+  }
+}
+@mixin between_lg-xl{
+  @media screen and (min-width: map-get($grid-breakpoints, 'lg')) and (max-width: map-get($grid-breakpoints, 'xl')){
+    @content;
+  }
+}
