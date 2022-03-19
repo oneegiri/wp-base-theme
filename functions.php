@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Setup theme constants
  */
@@ -6,11 +8,11 @@
 define('TEXT_DOMAIN', 'base-theme');
 define('THEME_PATH', get_stylesheet_directory());
 define('THEME_URI', get_stylesheet_directory_uri());
-define('SRC_ROOT', THEME_PATH . '/src');
-define('CORE_ROOT', SRC_ROOT . '/core');
-define('UTILS_ROOT', SRC_ROOT . '/utils');
-define('COMPATIBILITY_ROOT', SRC_ROOT . '/compatibility');
-define('PAGE_LOGIC_ROOT', SRC_ROOT . '/logic');
+define('INC_ROOT', THEME_PATH . '/src');
+define('CORE_ROOT', INC_ROOT . '/core');
+define('UTILS_ROOT', INC_ROOT . '/utils');
+define('COMPATIBILITY_ROOT', INC_ROOT . '/compatibility');
+define('PAGE_LOGIC_ROOT', INC_ROOT . '/logic');
 define('ASSETS_URI', THEME_URI . '/assets');
 define('VIEWS_PATH', THEME_PATH . '/views');
 define('DIST_ROOT', THEME_URI . '/dist');
@@ -39,5 +41,4 @@ for($i = 0; $i < count($modules); $i += 1){
 /**
  * Load utility functions
  */
-
 require_once UTILS_ROOT . '/custom-menu.php';

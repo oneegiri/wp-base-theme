@@ -93,5 +93,5 @@ $custom_components = array(
 );
 
 foreach($custom_components as $component){
-	require_once SRC_ROOT . '/compatibility/woocommerce-custom/' . $component . '.php';
+	require_once INC_ROOT . '/compatibility/woocommerce-custom/' . $component . '.php';
 }

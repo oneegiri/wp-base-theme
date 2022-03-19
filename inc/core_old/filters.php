@@ -105,3 +105,32 @@ function widget_first_last_classes($params)
   return $params;
 }
 //add_filter('dynamic_sidebar_params', 'widget_first_last_classes');
+
+function set_email_filters(){
+  $filters = array(
+    [
+      'name' => 'wp_mail_content_type',
+      'callback' => function ($ctype) {
+        return 'text/html';
+      }
+    ],
+    [
+      'name' => 'wp_mail_charset',
+      'callback' => function ($chset) {
+        return 'UTF-8';
+      }
+    ],
+    [
+      'name' => 'wp_mail_from',
+      'callback' => '__return_empty_string' //Overrides the default behaviour from wordpress
+    ],
+    [
+      'name' => 'wp_mail_from_name',
+      'callback' => '__return_empty_string' //Overrides the default behaviour from wordpress
+    ]
+    );
+
+    foreach($filters as $filter){
+      add_filter($filter['name'], $filter['callback']);
+    }
+}
