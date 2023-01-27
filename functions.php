@@ -12,11 +12,8 @@ define('INC_ROOT', THEME_PATH . '/src');
 define('CORE_ROOT', INC_ROOT . '/core');
 define('UTILS_ROOT', INC_ROOT . '/utils');
 define('COMPATIBILITY_ROOT', INC_ROOT . '/compatibility');
-define('PAGE_LOGIC_ROOT', INC_ROOT . '/logic');
 define('ASSETS_URI', THEME_URI . '/assets');
-define('VIEWS_PATH', THEME_PATH . '/views');
 define('DIST_ROOT', THEME_URI . '/dist');
-define('WOO_PATH', THEME_PATH . '/woocommerce');
 
 /**
  * Load all core modules

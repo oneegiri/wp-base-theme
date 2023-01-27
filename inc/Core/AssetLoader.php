@@ -103,7 +103,7 @@ final class AssetLoader
               isset($this->asset['in_footer']) ? $this->asset['in_footer'] : true
             );
           },
-          $athis->ction
+          $this->action
         );
         break;
     }

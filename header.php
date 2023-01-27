@@ -19,7 +19,6 @@ $site_name = get_bloginfo('name', 'display');
 </head>
 
 <body <?php body_class($body_class); ?>>
-	<?php wp_body_open(); ?>
 	<h1 class="sr-only"><?php echo esc_html($site_name . ' | ' . $site_desc); ?></h1>
 	<a class="skip-link sr-only" href="#main-content"><?php esc_html_e('Skip to content', TEXT_DOMAIN); ?></a>
 	<header>
